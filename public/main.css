@@ -272,3 +272,9 @@ color: #FFE400;
 .ft-block-shows .ft-contact p span{
   color: #FFE400;
 }
+.signup-block{
+  background-color: #000000;
+}
+.signup-block h2{
+  display: inline;
+}
