@@ -1,24 +1,29 @@
+<form class="signup-form" method="POST" action="users/signup">
+
 <div class="signup-block">
     <div class="signup-name">
         <h2>Name</h2><br>
-        <input class="signup_bar" />
+        <input class="signup_bar" type="text" name="full_name" placeholder="Name"/>
     </div>
 
     <div class="signup-birthdate">
         <h2>Birthday</h2><br>
-        <input class="signup_bar" />
+        <input class="signup_bar" type="text" name="birthday" placeholder="12/20/2018"/>
     </div>
 
     <div class="signup-email">
         <h2>Email</h2><br>
-        <input class="signup_bar"/>
+        <input class="signup_bar" type="text" name="email" placeholder="Email"/>
     </div>
 
-    <button class="btn btn-primary">Sign up</button>
+    <div class="signup-password">
+        <h2>Password</h2><br>
+        <input class="signup_bar" type="password" name="password" placeholder="Password"/>
+    </div>
 
 
-
-
+    <button class="btn btn-primary" type="submit">Sign up</button>
 
 
 </div>
+</form>

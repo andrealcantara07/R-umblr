@@ -17,3 +17,9 @@ ActiveRecord::Base.establish_connection(
 )
 
 # do stuff to store initial data
+user_instance = User.create(
+  name: name,
+  birthday: birthday,
+  email: email,
+  password: password
+)
