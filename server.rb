@@ -39,7 +39,7 @@ post '/users/signup' do
   puts "-----------"
   puts params
   puts "----------"
-  #-------------Create Users-------
+
   user_instance = User.create(
     name: params["full_name"],
     birthday: params["birthday"],
