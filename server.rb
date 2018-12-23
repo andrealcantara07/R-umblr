@@ -79,7 +79,7 @@ get '/logout' do
 end
 
 get '/blog' do
-  @blog= Blog.find_by(params["content"])
+  @message= Blog.all
  if 
   session[:user_id]
   
