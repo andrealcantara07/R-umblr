@@ -102,6 +102,13 @@ post '/users/blog' do
 redirect '/blog'
 end
 
+delete "blog/delete/:id" do 
+  @post = Blog.destroy(params[:id])
+  flash[:warning] = "Blog has been deleted"
+  
+  redirect "/blog"
+end
+
 get '/settings' do
 
   erb :settings, :layout => :layout_main
