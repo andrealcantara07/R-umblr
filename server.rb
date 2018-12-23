@@ -45,6 +45,6 @@ post '/users/signup' do
     birthday: params["birthday"],
     email: params["email"],
     password: params["password"]
-)
+  )
   redirect '/'
 end
