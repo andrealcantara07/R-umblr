@@ -24,3 +24,8 @@ user_instance = User.create(
   email: email,
   password: password
 )
+
+blog_instance = Blog.create(
+    title: params["title"],
+    content: params["content"]
+  )

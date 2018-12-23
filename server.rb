@@ -79,7 +79,7 @@ get '/logout' do
 end
 
 get '/blog' do
-  @blog= Blog.find_by(params["content"])
+  @message= Blog.all
  if 
   session[:user_id]
   
@@ -100,6 +100,13 @@ post '/users/blog' do
   
 
 redirect '/blog'
+end
+
+delete "blog/delete/:id" do 
+  @post = Blog.destroy(params[:id])
+  flash[:warning] = "Blog has been deleted"
+  
+  redirect "/blog"
 end
 
 get '/settings' do
