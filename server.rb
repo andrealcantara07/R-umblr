@@ -25,9 +25,23 @@ enable :sessions
 get '/' do
   erb :home, :layout => :layout_main
 end
-get '/login' do
 
+get '/login' do
+ 
   erb :login, :layout => :layout_main
+  
+end
+
+post '/users/login' do
+
+  user = User.find_by(email: params["email"], password: params["password"])
+  if user 
+    session[:user_id] = user.id
+    redirect '/'
+  else 
+    redirect '/login'
+  end
+
 end
 
 get '/signup' do
@@ -39,7 +53,11 @@ post '/users/signup' do
   puts "-----------"
   puts params
   puts "----------"
+  temp_user = User.find_by(email: params['email'])
+    if temp_user
+      redirect '/login'
   #-------------Create Users-------
+    else
   user_instance = User.create(
     name: params["full_name"],
     birthday: params["birthday"],
@@ -47,4 +65,26 @@ post '/users/signup' do
     password: params["password"]
   )
   redirect '/'
+    end
+end
+
+get '/logout' do 
+  session[:user_id] = nil
+  redirect '/'
+end
+
+get '/blog' do
+  
+ if 
+  session[:user_id]
+ erb :blog, :layout => :layout_main
+ else
+  erb :login, :layout => :layout_main
+ end
+
+end
+
+get '/settings' do
+
+  erb :settings, :layout => :layout_main
 end
