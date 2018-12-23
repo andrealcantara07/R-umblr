@@ -8,16 +8,24 @@
         </a>
       
         <ul class="nav-bar">
-            <li> <a href="/">Home</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Settings</a></li>
-
+                <li> <a href="/">Home</a></li>
+                <li><a href="/blog">Blog</a></li>
+            <% if session[:user_id] %>
+                <li><a href="/settings">Settings</a></li>
+            <% end %>
+                <li> <a href="/">About</a></li>
         </ul>
 
         <div class="nav-signin">
-            <a href="/login">Log In</a>
-            <a href="/signup">Sign Up</a>
-            <a href="#">Sign Out</a>
+            <% if session[:user_id]  %>
+
+            <% else %>
+                <a href="/login">Log In</a>
+                <a href="/signup">Sign Up</a>
+            <% end %>
+            <% if session[:user_id] %>
+                <a href="/logout">Sign Out</a>
+            <% end %>
         </div>
 
 
