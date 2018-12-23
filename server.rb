@@ -1,5 +1,6 @@
 require 'sinatra'
 require "sinatra/reloader"
+require "sinatra/flash"
 
 # Run this script with `bundle exec ruby app.rb`
 require 'sqlite3'
@@ -37,6 +38,7 @@ post '/users/login' do
   user = User.find_by(email: params["email"], password: params["password"])
   if user 
     session[:user_id] = user.id
+    flash[:success] = "You have logged in"
     redirect '/'
   else 
     redirect '/login'
@@ -69,16 +71,20 @@ post '/users/signup' do
 end
 
 get '/logout' do 
+
   session[:user_id] = nil
+  flash[:warning] ="You have logged out"
   redirect '/'
 end
 
 get '/blog' do
-  
+ 
  if 
   session[:user_id]
  erb :blog, :layout => :layout_main
  else
+
+  flash[:warning] ="Sign in to visit blog"
   erb :login, :layout => :layout_main
  end
 

@@ -13,6 +13,16 @@
 
 <%=erb :"partials/header"%>
 
+
+<% flash.keys.each do |type| %>
+  <div data-alert id="flash0" class="flash <%= type %> " >
+    <%= flash[type] %>
+    <a href="#" id="close0" class="close" >&times;</a>
+  </div>
+  
+<% end %>
+
+
 <main>
 
 <%=yield%>
@@ -20,13 +30,13 @@
 
 <%= erb :"partials/footer"%>
 
-
+<script src="/main.js"></script>
 <script src="node_modules/@glidejs/glide/dist/glide.min.js"></script>
 
 <script>
-new Glide('.glide').mount()
+new Glide('.glide').mount();
 </script>
 
-<script src="/main.js"></script>
+
 </body>
 </html>
