@@ -4,6 +4,7 @@ require 'active_record'
 
 #require model classes
 require './models/user.rb'
+require './models/blog.rb'
 
 # Use `binding.pry` anywhere in this script for easy debugging
 require 'pry'

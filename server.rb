@@ -8,6 +8,7 @@ require 'active_record'
 
 #require model classes
 require './models/user.rb'
+require './models/blog.rb'
 
 # Use `binding.pry` anywhere in this script for easy debugging
 require 'pry'
@@ -78,16 +79,27 @@ get '/logout' do
 end
 
 get '/blog' do
- 
+  @blog= Blog.find_by(params["content"])
  if 
   session[:user_id]
+  
  erb :blog, :layout => :layout_main
  else
 
   flash[:warning] ="Sign in to visit blog"
   erb :login, :layout => :layout_main
  end
+ 
+end
 
+post '/users/blog' do 
+  blog_instance = Blog.create(
+    title: params["title"],
+    content: params["content"]
+  )
+  
+
+redirect '/blog'
 end
 
 get '/settings' do
