@@ -1,6 +1,7 @@
 
 body{
   color: #FFFFFF;
+  background-color: #080808;
 
 }
 
@@ -277,4 +278,42 @@ color: #FFE400;
 }
 .signup-block h2{
   display: inline;
+}
+.flash.warning {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 500px;
+  border-radius: 5%;
+  background-color: rgb(200, 13, 13);
+  
+}
+
+.flash a {
+  margin-left: 10px;
+  color: #FFFFFF;
+  text-decoration: none;
+  
+}
+.flash a:focus {
+  margin-left: 10px;
+  color: #FFFFFF;
+}
+.flash a:hover {
+  color: rgb(197, 197, 197);
+}
+.flash.success {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 500px;
+  border-radius: 5%;
+  background-color: rgb(115, 227, 140);
+  
 }
