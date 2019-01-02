@@ -79,31 +79,40 @@ get '/logout' do
 end
 
 get '/blog' do
-  @message= Blog.all
+
+  @message= Blog.limit(10)
  if 
   session[:user_id]
   
  erb :blog, :layout => :layout_main
+
  else
 
   flash[:warning] ="Sign in to visit blog"
   erb :login, :layout => :layout_main
  end
  
+
 end
 
 post '/users/blog' do 
+  @user_id = User.find(session[:user_id])
   blog_instance = Blog.create(
     title: params["title"],
-    content: params["content"]
+    content: params["content"],
+    user_id: @user_id
   )
   
 
 redirect '/blog'
 end
 
-delete "blog/delete/:id" do 
-  @post = Blog.destroy(params[:id])
+put "/blog/delete/" do
+  @blogs = Blog.find(params[:id])
+end
+
+delete "/blog/delete/" do 
+ @blog = Blog.destroy(params[:id])
   flash[:warning] = "Blog has been deleted"
   
   redirect "/blog"

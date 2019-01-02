@@ -1,12 +1,21 @@
-<h1 style="background: black;">Post your blog</h1>
+<h1 style="text-align: center; background: #73232F;">Post your blog</h1>
 
 
 
-<% @message.each do |i| %>
+<div class= "blog-bg">
+<% @message.reverse.each do |i| %>
+   <div class="blog-skin">
    <h1> <%= i.title %> </h1>
-    <p><%= i.content %></p>
-    
+    <p><%= i.content %></p><br>
+    <form method="POST" action="/blog/delete/">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete">
+    </form>
+    <br>
+    </div>
+   
     <% end %>
+   
 
 <form  class ="blog-form" method="POST" action="users/blog">
 <div class="blog-title">
@@ -16,5 +25,7 @@
 <br>
 <textarea class="content-bar" rows="8" cols="80" type="text" name="content" placeholder="Post content here.."></textarea>
 </div>
+<br>
 <input type="submit" value="Post">
 </form>
+</div>

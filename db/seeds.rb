@@ -27,5 +27,6 @@ user_instance = User.create(
 
 blog_instance = Blog.create(
     title: params["title"],
-    content: params["content"]
+    content: params["content"],
+    user_id: @user_id
   )

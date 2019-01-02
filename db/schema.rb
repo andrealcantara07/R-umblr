@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 2) do
   create_table "blogs", force: :cascade do |t|
     t.string "title"
     t.text "content"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
