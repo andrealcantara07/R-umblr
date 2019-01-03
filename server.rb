@@ -106,9 +106,9 @@ post '/users/blog' do
 redirect '/blog'
 end
 
-put "/blog/delete/" do
-  @blogs = Blog.find(params[:id])
-end
+# put "/blog/delete/" do
+#   @blogs = Blog.find(params[:id])
+# end
 
 delete "/blog/delete/:id" do 
  @blog = Blog.find(params[:id]).destroy
@@ -120,4 +120,11 @@ end
 get '/settings' do
 
   erb :settings, :layout => :layout_main
+end
+
+delete "/settings/erase/" do
+@user = User.find(session[:user_id]).destroy
+  flash[:warning] = "Account is gone forever..."
+  session[:user_id] = nil
+  redirect "/"
 end
