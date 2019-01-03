@@ -96,11 +96,10 @@ get '/blog' do
 end
 
 post '/users/blog' do 
-  @user_id = User.find(session[:user_id])
   blog_instance = Blog.create(
     title: params["title"],
     content: params["content"],
-    user_id: @user_id
+    user_id: session[:user_id]
   )
   
 
@@ -111,8 +110,8 @@ put "/blog/delete/" do
   @blogs = Blog.find(params[:id])
 end
 
-delete "/blog/delete/" do 
- @blog = Blog.destroy(params[:id])
+delete "/blog/delete/:id" do 
+ @blog = Blog.find(params[:id]).destroy
   flash[:warning] = "Blog has been deleted"
   
   redirect "/blog"
