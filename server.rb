@@ -20,7 +20,7 @@ if ENV['DATABASE_URL']
   require 'pg'
   ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'])
 else
-
+8
   require 'sqlite3'
 ActiveRecord::Base.establish_connection(
   adapter: 'sqlite3',
